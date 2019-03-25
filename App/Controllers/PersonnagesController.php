@@ -2,20 +2,21 @@
 
 namespace App\Controllers;
 
-use App\Interfaces\CrudInterface;
 use App\Models\Database;
+use App\Interfaces\CrudInterface;
 
 
-class PersonnagesController extends Database implements CrudInterface
+class PersonnagesController implements CrudInterface
 {
-    public function __construct()
+    public function __construct(Database $db)
     {
-        Database::boot('personnages_table');
+        $this->db = $db;
+        $this->db->boot('personnages_table');
     }
 
     public function index()
     {
-        return Database::index();
+        return $this->db->index();
     }
 
     public function show()
@@ -30,7 +31,9 @@ class PersonnagesController extends Database implements CrudInterface
 
     public function store($request)
     {
-        Database::builder('store', self::TABLENAME);
+        $this->db->store($request);
+
+        header('Location: ?page=arena');
     }
 
     public function edit()

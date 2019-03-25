@@ -2,6 +2,8 @@
 
 namespace Config;
 
+use App\Models\Database;
+use App\Models\Personnage;
 use App\Controllers\PersonnagesController;
 
 
@@ -11,6 +13,8 @@ class Api
     {
         if(isset($_POST['action'])) {
             $this->post = (object) $_POST;
+            $this->personnage = new Personnage($_POST);
+            $this->personnages_controller = new PersonnagesController(new Database);
 
             $this->load();
         }
@@ -18,10 +22,10 @@ class Api
 
     protected function load()
     {
-        switch($this->action) {
+        switch($this->post->action) {
             case 'sign_in':
-                
-                var_dump($this->post);
+                $_SESSION['perso'] = $this->post->name;
+                $this->personnages_controller->store($this->post);
             break;
         }
     }

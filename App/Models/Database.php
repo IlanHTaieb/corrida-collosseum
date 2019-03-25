@@ -15,63 +15,68 @@ class Database
      *
      * @var \PDO
      */
-    protected static $pdo;
+    protected $pdo;
+
+    protected $tablename;
 
     public function __construct()
     {
-        if(self::$pdo == null) {
+        if($this->pdo == null) {
             $this->setPDO();
         }
     }
 
     public function boot($tablename)
     {
-        self::$tablename = $tablename;
+        $this->tablename = $tablename;
     }
 
-    protected static function index($object = true)
+    public function index($object = true)
     {
-        $request = self::$pdo->query('SELECT * FROM ' . self::$tablename);
+        $query = $this->pdo->query('SELECT * FROM ' . $this->tablename);
 
         if($object){
-            $request->setFetchMode(PDO::FETCH_OBJ);
+            $query->setFetchMode(PDO::FETCH_OBJ);
         }
 
-        return $request->fetchAll();
+        return $query->fetchAll();
     }
 
-    protected static function show($id)
+    public function show($id)
     {
 
     }
 
-    protected static function create()
+    public function create()
     {
 
     }
 
-    protected static function store()
+    public function store($request)
+    {
+        $query = $this->pdo->prepare('INSERT INTO ' . $this->tablename . '(name) VALUES (:name)');
+        $query->execute([
+            "name" => $request->name
+        ]);
+    }
+
+    public function edit() 
     {
 
     }
 
-    protected static function edit() 
+    public function update()
     {
 
     }
 
-    protected static function update()
-    {
-
-    }
-
-    protected static function destroy()
+    public function destroy()
     {
 
     }
 
     private function setPDO()
     {
-        self::$pdo = new \PDO(self::DB_DSN, self::DB_USER, self::DB_PASSWORD, self::DB_OPTIONS);
+        $this->pdo = new \PDO(self::DB_DSN, self::DB_USER, self::DB_PASSWORD, self::DB_OPTIONS);
     }
 }
