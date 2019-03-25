@@ -29,7 +29,7 @@ class Database
         self::$tablename = $tablename;
     }
 
-    protected static function index()
+    protected static function index($object = true)
     {
         $request = self::$pdo->query('SELECT * FROM ' . self::$tablename);
 

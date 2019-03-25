@@ -15,7 +15,7 @@ class PersonnagesController extends Database implements CrudInterface
 
     public function index()
     {
-        return Database::index(null);
+        return Database::index();
     }
 
     public function show()

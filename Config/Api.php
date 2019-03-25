@@ -2,22 +2,27 @@
 
 namespace Config;
 
+use App\Controllers\PersonnagesController;
+
+
 class Api
 {
     public function __construct()
     {
         if(isset($_POST['action'])) {
-            $this->post = $_POST['action'];
+            $this->post = (object) $_POST;
 
-            $this->setUp();
+            $this->load();
         }
     }
 
-    protected function setup()
+    protected function load()
     {
-        switch($this->post) {
+        switch($this->action) {
             case 'sign_in':
                 
+                var_dump($this->post);
+            break;
         }
     }
 }
