@@ -7,6 +7,7 @@
     <title>Jeu de role</title>
 </head>
 <body>
+    <h1>Bienvenue dans le Corrida Colosseum !</h1>
     
     <?= $content; ?>
 

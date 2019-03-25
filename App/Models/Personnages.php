@@ -4,13 +4,10 @@ namespace App\Models;
 
 class Personnages
 {
-    private $power;
-    private $location;
-    private $experience;
-    private $heal;
+    protected $power;
+    protected $name;
 
-    public function index()
-    {
-        return Database::builder('index', 'test');
-    }
+    public function power() {return $this->power;}
+
+    public function name() {return $this->name;}
 }
