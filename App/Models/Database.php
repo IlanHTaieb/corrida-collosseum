@@ -24,21 +24,14 @@ class Database
         }
     }
 
-    public static function builder($statement, $tablename, $id = null)
+    public function boot($tablename)
     {
-        switch($statement) {
-            case 'index':
-                return self::index($tablename);
-            break;
-            case 'show':
-                return self::show($id);
-            break;
-        }
+        self::$tablename = $tablename;
     }
 
-    protected static function index($tablename, $object = true)
+    protected static function index()
     {
-        $request = self::$pdo->query('SELECT * FROM ' . $tablename);
+        $request = self::$pdo->query('SELECT * FROM ' . self::$tablename);
 
         if($object){
             $request->setFetchMode(PDO::FETCH_OBJ);

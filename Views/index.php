@@ -7,8 +7,8 @@
 
 require '../Autoloader.php';
 
-use Config\Routes;
 use App\Models\Database;
+use App\Models\Config as AppConfig;
 
 Autoloader::register();
 
@@ -16,7 +16,8 @@ new Database;
 
 ob_start();
 
-new Routes;
+new AppConfig;
+
 
 $content = ob_get_clean();
 
