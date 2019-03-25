@@ -7,17 +7,16 @@
 
 require '../Autoloader.php';
 
+use Config\Routes;
 use App\Models\Database;
 
 Autoloader::register();
 
 new Database;
 
-$route = require '../Config/routes.php';
-
 ob_start();
 
-require 'pages/' . $route . '.php';
+new Routes;
 
 $content = ob_get_clean();
 

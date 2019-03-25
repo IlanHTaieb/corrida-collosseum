@@ -38,7 +38,7 @@ class Database
 
     protected static function index($tablename, $object = true)
     {
-        $request = self::$pdo->query('SELECT * FROM test');
+        $request = self::$pdo->query('SELECT * FROM ' . $tablename);
 
         if($object){
             $request->setFetchMode(PDO::FETCH_OBJ);
@@ -72,7 +72,7 @@ class Database
 
     }
 
-    protected static function delete()
+    protected static function destroy()
     {
 
     }
