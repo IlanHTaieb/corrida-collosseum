@@ -10,3 +10,56 @@ a {
     color: black;
     text-decoration: none;
 }
+
+.list_item {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 75%;
+    height: 150px;
+    background: rgba(92, 92, 92, 0.7);
+    border: 1px solid white;
+    color: white;
+    opacity: 1;
+    font-size: 50px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 2s;
+}
+
+.list_item:hover {
+    background: rgb(182, 182, 182, 0.7);
+}
+
+input[type=text] {
+    width: 500px;
+    height: 50px;
+    margin: 10px;
+    padding: 15px;
+    background: rgba(216, 216, 216, 0.6);
+    border: 1px solid white;
+    color: white;
+    opacity: 1;
+    font-size: 35px;
+    font-weight: bold;
+}
+
+input[type=text]::placeholder {
+    color: white;
+    opacity: 1;
+    font-size: 35px;
+    font-weight: bold;
+}
+
+button {
+    width: 250px;
+    height: 85px;
+    font-size: 30px;
+    cursor: pointer;
+    border: 2px solid white;
+    transition: background 1s;
+}
+
+button:hover {
+    background: rgba(255, 255, 255, 0.8);
+}

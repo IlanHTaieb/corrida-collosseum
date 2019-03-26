@@ -1,13 +1,13 @@
 <div class="container">
     <form action="/_OPENCLASSROOMS/php_po/views/index.php" method="post">
-        <label for="name">Nom</label>
-
         <input type="hidden" name="action" value="sign_in">
+    
+        <div class="input_name">
+            <input type="text" name="name" id="name" placeholder="Votre nom">
 
-        <div>
-            <input type="text" name="name" id="name">
+            <button type="submit">S'inscrire</button>
         </div>
-
-        <button type="submit">S'inscrire</button>
+    
+        <a href="?page=login">Déja inscris ?</a>
     </form>
 </div>

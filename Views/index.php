@@ -16,6 +16,7 @@ ob_start();
 $config = new AppConfig();
 
 $page = $config->loadStylesheet();
+
 $content = ob_get_clean();
 
 require 'layouts/default.php';

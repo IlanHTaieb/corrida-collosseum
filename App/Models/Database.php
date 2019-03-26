@@ -33,7 +33,6 @@ class Database
 
     public function boot($tablename)
     {
-        var_dump($this->tablename);
         $this->tablename = $tablename;
     }
 
