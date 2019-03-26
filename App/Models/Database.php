@@ -26,6 +26,11 @@ class Database
 
     public function __construct()
     {
+        
+        if(isset($_SESSION['gladiator'])) {
+            $this->session = $_SESSION['gladiator'];
+        }
+
         if($this->pdo == null) {
             $this->setPDO();
         }
@@ -38,7 +43,7 @@ class Database
 
     public function index($object = true)
     {
-        $query = $this->pdo->query('SELECT * FROM ' . $this->tablename);
+        $query = $this->pdo->query("SELECT * FROM " . $this->tablename . " WHERE name <> '" . $this->session . "'");
 
         if($object){
             $query->setFetchMode(PDO::FETCH_OBJ);

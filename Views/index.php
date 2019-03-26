@@ -5,6 +5,8 @@
  * For set a general stubs, go to layout's files.
  */
 
+ session_start();
+
 require '../Autoloader.php';
 
 use Config\Config as AppConfig;

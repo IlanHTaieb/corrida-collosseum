@@ -13,7 +13,6 @@ class Api
         $this->post = (object) $_POST;
         $this->gladiator = new Gladiator($_POST);
         $this->gladiators_controller = new GladiatorsController('gladiators_table');
-    
         $this->load();
     }
 
@@ -23,13 +22,6 @@ class Api
             case 'sign_in':
                 $_SESSION['gladiator'] = $this->post->name;
                 $this->gladiators_controller->store($this->gladiator);
-            break;
-            case 'login':
-                $_SESSION['gladiator'] = $this->post->name;
-            break;
-            case 'logout':
-                $_SESSION['gladiator'] = null;
-                session_destroy();
             break;
         }
     }
