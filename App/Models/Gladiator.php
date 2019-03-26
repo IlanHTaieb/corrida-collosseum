@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-class Personnage
+class Gladiator
 {
     protected $name;
     protected $heal;
@@ -25,7 +25,7 @@ class Personnage
 
     public function name() {return $this->name;}
     
-    public function power() {return $this->heal;}
+    public function heal() {return $this->heal;}
 
     public function setName($name)
     {

@@ -4,7 +4,7 @@ namespace Config;
 
 class Routes
 {
-    public function __construct()
+    public static function register()
     {
         $page = 'home';
 

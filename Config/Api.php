@@ -2,30 +2,34 @@
 
 namespace Config;
 
-use App\Models\Database;
-use App\Models\Personnage;
-use App\Controllers\PersonnagesController;
+use App\Models\Gladiator;
+use App\Controllers\GladiatorsController;
 
 
 class Api
 {
     public function __construct()
     {
-        if(isset($_POST['action'])) {
-            $this->post = (object) $_POST;
-            $this->personnage = new Personnage($_POST);
-            $this->personnages_controller = new PersonnagesController(new Database);
-
-            $this->load();
-        }
+        $this->post = (object) $_POST;
+        $this->gladiator = new Gladiator($_POST);
+        $this->gladiators_controller = new GladiatorsController('gladiators_table');
+    
+        $this->load();
     }
 
     protected function load()
     {
         switch($this->post->action) {
             case 'sign_in':
-                $_SESSION['perso'] = $this->post->name;
-                $this->personnages_controller->store($this->post);
+                $_SESSION['gladiator'] = $this->post->name;
+                $this->gladiators_controller->store($this->gladiator);
+            break;
+            case 'login':
+                $_SESSION['gladiator'] = $this->post->name;
+            break;
+            case 'logout':
+                $_SESSION['gladiator'] = null;
+                session_destroy();
             break;
         }
     }

@@ -7,18 +7,15 @@
 
 require '../Autoloader.php';
 
-use App\Models\Database;
-use App\Models\Config as AppConfig;
+use Config\Config as AppConfig;
 
 Autoloader::register();
 
-new Database;
-
 ob_start();
 
-new AppConfig;
+$config = new AppConfig();
 
-
+$page = $config->loadStylesheet();
 $content = ob_get_clean();
 
 require 'layouts/default.php';

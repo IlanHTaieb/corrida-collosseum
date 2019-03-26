@@ -17,6 +17,11 @@ class Database
      */
     protected $pdo;
 
+    /**
+     *
+     *
+     * @var string
+     */
     protected $tablename;
 
     public function __construct()
@@ -28,6 +33,7 @@ class Database
 
     public function boot($tablename)
     {
+        var_dump($this->tablename);
         $this->tablename = $tablename;
     }
 
@@ -54,9 +60,9 @@ class Database
 
     public function store($request)
     {
-        $query = $this->pdo->prepare('INSERT INTO ' . $this->tablename . '(name) VALUES (:name)');
+        $query = $this->pdo->prepare('INSERT INTO ' . $this->tablename . '(name, heal) VALUES (:name, 100)');
         $query->execute([
-            "name" => $request->name
+            "name" => $request->name()
         ]);
     }
 

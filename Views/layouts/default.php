@@ -1,15 +1,16 @@
 <!DOCTYPE html>
 <html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Jeu de role</title>
-</head>
-<body>
-    <h1>Bienvenue dans le Corrida Colosseum !</h1>
-    
-    <?= $content; ?>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <link rel="stylesheet" href="assets/stylesheets/app.css">
+        <link rel="stylesheet" href=<?= $page ?>>
+        <title>Jeu de role</title>
+    </head>
+    <body>
+        
+        <?= $content; ?>
 
-</body>
+    </body>
 </html>
