@@ -20,8 +20,14 @@ class Api
     {
         switch($this->post->action) {
             case 'sign_in':
-                $_SESSION['gladiator'] = $this->post->name;
-                $this->gladiators_controller->store($this->gladiator);
+                if($this->gladiators_controller->exist($this->gladiator)[0] == '0') {
+                    $_SESSION['gladiator'] = $this->post->name;
+                    $this->gladiators_controller->store($this->gladiator);
+
+                    header('Location: ?page=arena');
+                } else {
+                    header('Location: ?page=sign_in');
+                }
             break;
             case 'login':
                 $validate = $this->gladiators_controller->login($this->gladiator);
@@ -40,6 +46,8 @@ class Api
                 $this->gladiators_controller->update($this->gladiator);
 
                 header('Location: ?page=arena');
+            break;
+            case 'logout':
             break;
         }
     }

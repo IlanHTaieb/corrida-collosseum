@@ -12,9 +12,9 @@ class GladiatorsController extends Controller
         return $this->database->index();
     }
 
-    public function exist($name)
+    public function exist(Gladiator $gladiator)
     {
-        return $this->database->count($name);
+        return $this->database->count($gladiator);
     }
 
     public function store(Gladiator $request)

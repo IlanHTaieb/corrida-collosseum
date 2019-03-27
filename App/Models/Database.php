@@ -52,6 +52,13 @@ class Database
         return $query->fetchAll();
     }
 
+    public function count(Gladiator $gladiator)
+    {
+        $request = $this->pdo->query("SELECT COUNT(*) FROM " . $this->tablename . " WHERE name = '" . $gladiator->name() . "'");
+
+        return $request->fetch();
+    }
+
     public function show($request)
     {
         $query = $this->pdo->query("SELECT name FROM " . $this->tablename . " WHERE name = '" . $request->name() . "'");
