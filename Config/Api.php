@@ -23,6 +23,17 @@ class Api
                 $_SESSION['gladiator'] = $this->post->name;
                 $this->gladiators_controller->store($this->gladiator);
             break;
+            case 'login':
+                $validate = $this->gladiators_controller->login($this->gladiator);
+
+                if($validate) {
+                    $_SESSION['gladiator'] = $validate->name;
+
+                    header('Location: ?page=arena');
+                } else {
+                    header('Location: ?page=sign_in');
+                }
+            break;
         }
     }
 }

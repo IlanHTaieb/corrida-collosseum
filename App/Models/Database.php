@@ -52,9 +52,13 @@ class Database
         return $query->fetchAll();
     }
 
-    public function show($id)
+    public function show($request)
     {
+        $query = $this->pdo->query("SELECT name FROM " . $this->tablename . " WHERE name = '" . $request->name() . "'");
 
+        $query->setFetchMode(PDO::FETCH_OBJ);
+        
+        return $query->fetch();
     }
 
     public function create()

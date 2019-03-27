@@ -3,7 +3,6 @@
 namespace App\Controllers;
 
 use App\Models\Gladiator;
-use App\Models\Database;
 
 
 class GladiatorsController extends Controller
@@ -13,16 +12,6 @@ class GladiatorsController extends Controller
         return $this->database->index();
     }
 
-    public function show()
-    {
-
-    }
-
-    public function create()
-    {
-
-    }
-
     public function store(Gladiator $request)
     {
         $this->database->store($request);
@@ -30,14 +19,9 @@ class GladiatorsController extends Controller
         header('Location: ?page=arena');
     }
 
-    public function edit()
+    public function login(Gladiator $request)
     {
-
-    }
-
-    public function update(Gladiator $request)
-    {
-
+        return $this->database->show($request);
     }
 
     public function destroy()
