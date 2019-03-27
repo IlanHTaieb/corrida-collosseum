@@ -34,6 +34,13 @@ class Api
                     header('Location: ?page=sign_in');
                 }
             break;
+            case 'hit':
+                $this->gladiator->suffer();
+
+                $this->gladiators_controller->update($this->gladiator);
+
+                header('Location: ?page=arena');
+            break;
         }
     }
 }

@@ -36,4 +36,9 @@ class Gladiator
     {
         $this->heal = $heal;
     }
+
+    public function suffer()
+    {
+        $this->heal -= 25;
+    }
 }

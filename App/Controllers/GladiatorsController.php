@@ -12,6 +12,11 @@ class GladiatorsController extends Controller
         return $this->database->index();
     }
 
+    public function exist($name)
+    {
+        return $this->database->count($name);
+    }
+
     public function store(Gladiator $request)
     {
         $this->database->store($request);
@@ -22,6 +27,11 @@ class GladiatorsController extends Controller
     public function login(Gladiator $request)
     {
         return $this->database->show($request);
+    }
+
+    public function update(Gladiator $gladiator)
+    {
+        $this->database->update($gladiator);
     }
 
     public function destroy()

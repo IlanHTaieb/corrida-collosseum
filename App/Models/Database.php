@@ -79,14 +79,23 @@ class Database
 
     }
 
-    public function update()
+    public function update(Gladiator $gladiator)
     {
+        $request = $this->pdo->prepare('UPDATE ' . $this->tablename . ' set heal = :heal WHERE name = :name');
 
+        $request->execute([
+            "name" => $gladiator->name(),
+            "heal" => $gladiator->heal() 
+        ]);
+
+        if ($gladiator->heal() <= 0) {
+            $this->destroy($gladiator);
+        }
     }
 
-    public function destroy()
+    public function destroy(Gladiator $gladiator)
     {
-
+        $this->pdo->exec("DELETE from " . $this->tablename . " WHERE name = '" . $gladiator->name() . "'");
     }
 
     private function setPDO()
