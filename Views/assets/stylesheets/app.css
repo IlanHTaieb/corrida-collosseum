@@ -63,3 +63,21 @@ button {
 button:hover {
     background: rgba(255, 255, 255, 0.8);
 }
+
+.navlink {
+    float: right;
+    text-align: center;
+    margin: 5px;
+    color: white;
+    font-size: 30px;
+    font-weight: bold;
+    border: 2px solid white;
+    padding: 20px;
+    background: rgba(129, 129, 129, 0.6);
+    cursor: pointer;
+    transition: background 1s;
+}
+
+.logout:hover {
+    background: rgba(255, 76, 76, 0.6);
+}

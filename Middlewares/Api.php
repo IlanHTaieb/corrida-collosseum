@@ -1,6 +1,6 @@
 <?php
 
-namespace Config;
+namespace Middlewares;
 
 use App\Models\Gladiator;
 use App\Controllers\GladiatorsController;
@@ -24,10 +24,10 @@ class Api
                     $_SESSION['gladiator'] = $this->post->name;
                     $this->gladiators_controller->store($this->gladiator);
 
-                    header('Location: ?page=arena');
-                } else {
-                    header('Location: ?page=sign_in');
+                    return header('Location: ?page=arena');
                 }
+                
+                return header('Location: ?page=sign_in');
             break;
             case 'login':
                 $validate = $this->gladiators_controller->login($this->gladiator);
@@ -35,19 +35,22 @@ class Api
                 if($validate) {
                     $_SESSION['gladiator'] = $validate->name;
 
-                    header('Location: ?page=arena');
-                } else {
-                    header('Location: ?page=sign_in');
+                    return header('Location: ?page=arena');
                 }
+                
+                return header('Location: ?page=sign_in');
             break;
             case 'hit':
                 $this->gladiator->suffer();
 
                 $this->gladiators_controller->update($this->gladiator);
 
-                header('Location: ?page=arena');
+                return header('Location: ?page=arena');
             break;
             case 'logout':
+                $_SESSION['gladiator'] = null;
+
+                return header('Location: ?page=sign_in');
             break;
         }
     }

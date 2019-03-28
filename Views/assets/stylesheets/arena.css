@@ -5,7 +5,8 @@ body {
 
 .container {
     position: absolute;
-    margin: 50px 0;
+    left: 0;
+    margin: 150px 0;
     width: 100%;
     min-height: 100vh;
     background: linear-gradient(to right,
@@ -22,4 +23,8 @@ body {
     display: flex;
     justify-content: space-around;
     align-items: center;
+}
+
+.list_item p {
+    user-select: none;
 }

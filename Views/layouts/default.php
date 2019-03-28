@@ -10,6 +10,23 @@
     </head>
     <body>
         
+        <?php if(isset($_SESSION['gladiator']) && $_SESSION['gladiator'] != null && isset($_GET['page'])) { ?>
+            
+            <div class="navlink logout">
+                <form action="/_OPENCLASSROOMS/php_po/views/index.php" method="post">
+                    <input type="hidden" name="action" value="logout">
+                </form>
+                Deconnection
+            </div>
+
+            <div class="navlink returnhome">
+            <form action="/_OPENCLASSROOMS/php_po/views/index.php" method="get">
+                </form>
+                Accueil
+            </div>
+<?php
+        } ?>
+
         <?= $content; ?>
 
         <script src="assets/js/app.js"></script>

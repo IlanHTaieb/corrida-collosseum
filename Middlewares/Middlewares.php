@@ -1,8 +1,8 @@
 <?php
 
-namespace Config;
+namespace Middlewares;
 
-class Config
+class Middlewares
 {
     public function __construct()
     {

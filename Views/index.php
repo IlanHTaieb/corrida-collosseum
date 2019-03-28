@@ -5,19 +5,19 @@
  * For set a general stubs, go to layout's files.
  */
 
- session_start();
+session_start();
 
 require '../Autoloader.php';
 
-use Config\Config as AppConfig;
+use Middlewares\Middlewares as AppMiddlewares;
 
 Autoloader::register();
 
 ob_start();
 
-$config = new AppConfig();
+$middlewares = new AppMiddlewares();
 
-$page = $config->loadStylesheet();
+$page = $middlewares->loadStylesheet();
 
 $content = ob_get_clean();
 
